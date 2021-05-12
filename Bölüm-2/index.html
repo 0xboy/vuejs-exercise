@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <button v-on:click="alertGoster('Ahmet')">Alert Göster</button>
+  <button v-on:click="counter++">arrtır</button>
+  <button v-on:click="secondCounter++">2. sayıcı</button>
+  <p>{{counterCheck()}}</p>
+  <p>{{output}}</p>
+  <p>{{counter}}</p>
+  <p>{{secondCounter}}</p>
+  
+  <p v-on:mousemove="updateCords(2, $event)">Koordinatlar : {{x}}, {{y}}
+    <span v-on:mousemove.stop>Gizli Bölme</span>
+  </p>
+  
+    <input type="text" v-on:keyup.enter.space="alertGoster('ahmetcan')"/>
+</div>
+
+new Vue({
+  el:"#app",
+  data : {counter:0,secondCounter:0,x:0,y:0},
+  methods:{
+    alertGoster : function(name){alert(name);},
+    updateCords:function(step, event){this.counter +=2;this.x = event.clientX;this.y=event.clientY},
+    counterCheck:function(){console.log("check");return this.counter < 10 ? "Counter 10dan küçük":"counter 10dan büyük"}
+  },
+  computed : {
+    output : function(){console.log("output");return this.counter < 10 ? "Counter 10dan küçük":"counter 10dan büyük"}
+  },
+  watch:{
+    counter:function(value){
+      vm = this;
+      setTimeout(function(){
+        vm.counter = 0;
+      },1500);
+    }
+  }
+});

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+
+
+
+</head>
+<body>
+
+	<div id="app">
+	  <h1>{{title}}</h1>
+	<hr>
+	<input type="text" v-on:input="changeText">
+
+	<p>{{descrp}}</p>
+</div>
+
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		  data:{title:"Merhaba Ahmet Can", descrp:"Bu bir açıklama"},
+		  methods : {changeText:function(event){
+		  	this.descrp = event.target.value;
+  }}
+
+});
+</script>
+
+</body>
+</html>

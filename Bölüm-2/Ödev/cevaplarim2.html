@@ -1,0 +1,51 @@
+<div id="app">
+
+    <!-- 1) Butona tıklanıldığında bir alert kutusu çıkartınız -->
+
+    <div>
+
+        <button v-on:click="alertGoster('Ahmet Can')">Alert Göster</button>
+
+    </div>
+
+    <!-- 2) "keydown" event'ini dinleyerek value değişkeni içerisinde yazdığınız veriyi saklayın. (ipucu: event.target.value size yazdığınız değeri verebilir.) -->
+
+    <div>
+
+        <input type="text" v-on:keydown="changeValue">
+
+        <p>{{ value }}</p>
+
+    </div>
+
+    <!-- 3) 2.Uygulamayı düzenleyerek eğer keydown ENTER ise yazdığınız verinin value değerine aktarılmasını sağlayın -->
+
+    <div>
+
+        <input type="text" v-on:keydown.enter="updateValue">
+
+        <p>{{ value }}</p>
+
+    </div>
+
+</div>
+
+
+
+new Vue({
+
+el:"#app",
+
+  data : {value : ''},
+
+  methods:{
+
+  alertGoster : function(name){alert(name);},
+
+    changeValue : function(event){this.value = event.target.value;},
+
+    updateValue:function(event){this.value = this.value + ' ' + event.target.value;}
+
+  }
+
+});
