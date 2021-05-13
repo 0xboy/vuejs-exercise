@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <p v-if="show">Beni görebilirsin</p>
+  <p v-else>Beni görmezden gel!</p>
+  <button @click="show = !show">Göster/Gizle</button>
+  
+  <p v-if="sayi < 10">sayı 10dan küçüktür</p>
+  <p v-else-if="sayi > 10">sayı 10dan küçüktür</p>
+  <p v-else>sayı 10'a eşittir</p>
+  
+  <button @click="showPra = !showPra">Göster/Gizle</button>
+  <p v-show="showPra">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque numquam et, aut quaerat quia repudiandae dolorum rem, accusamus voluptatibus doloremque iure quisquam deleniti! Illum consequuntur repellat, accusamus quos aperiam, debitis!</p>
+  
+  <hr>
+  
+  <ul>
+    <li v-for="(product, i) in products" :key="product">{{product}} - {{i}}</li>
+  </ul>
+  
+  <div v-for="(product, i) in products">
+    <h3>{{product}}</h3>
+    <p>{{i}}</p>
+  </div>
+  <hr>
+  <template  v-for="(product, i) in products">
+    <h3>{{product}}</h3>
+    <p>{{i}}</p>
+  </template>
+  
+  <hr>
+  
+  <ul>
+    <li v-for="person in persons">
+    <ul v-for="(value,key,i) in person">
+      <li>{{value}} <strong>{{key}}</strong> </li>
+    </ul></li>
+  </ul>
+  
+  <hr>
+  
+  <span v-for="i in 5">{{i}}</span>
+  
+  <hr>
+  
+  <button @click="products.push('hoparlor')">Ekle</button>
+  
+</div>
+<script type="text/javascript">
+	new Vue({
+    el:"#app",
+    data:{show : false,sayi:10,showPra:false,
+    	products : ["pc", "mouse", "klavye"],
+      persons : [
+        {name : "Ahmet", mail:"ahmet@mail.com"},
+        {name : "Mehmet", mail:"mehmet@mail.com"},
+        {name : "Ali", mail:"ali@mail.com"},
+        {name : "Veli", mail:"veli@mail.com"}
+      ]
+    },
+});	
+</script>
+</body>
+</html>
